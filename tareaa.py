@@ -10,7 +10,6 @@ cipher = CAST.new(key, CAST.MODE_CBC, iv)
 plaintext = b'R1R1R1R1R1R1R1R1R1R1R2R3'
 msg = cipher.encrypt(plaintext)
 
-print (cipher.encrypt(plaintext))
 
 app= Flask(__name__)
 
@@ -20,8 +19,6 @@ app= Flask(__name__)
 def index():
     id = msg
     return render_template("home.html", id=msg)
-
-
 
 if __name__ == "__main__":
     app.run()
