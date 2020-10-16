@@ -6,7 +6,7 @@ from flask import Flask, render_template
 #la llave  tiene un tamaño maximo de 16 caracteres
 key = b'1234567890123456'
 iv = Random.new().read(CAST.block_size)
-cipher = CAST.new(key, CAST.MODE_OPENPGP, iv)
+cipher = CAST.new(key, CAST.MODE_CBC, iv)
 plaintext = b'R1R1R1R1R1R1R1R1R1R1R2R3'
 msg = cipher.encrypt(plaintext)
 
