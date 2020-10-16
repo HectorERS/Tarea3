@@ -9,7 +9,7 @@ iv = Random.new().read(CAST.block_size)
 cipher = CAST.new(key, CAST.MODE_CFB, iv)
 plaintext = b'mensaje a descifrar con el algoritmo CAST128'
 msg = cipher.encrypt(plaintext)
-
+msg= b64encode(msg).decode('utf-8')
 
 app= Flask(__name__)
 
