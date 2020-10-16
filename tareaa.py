@@ -5,8 +5,9 @@ from flask import Flask, render_template
 
 #la llave  tiene un tamaño maximo de 16 caracteres
 key = b'1234567890123456'
-cipher = CAST.new(key, CAST.MODE_CBC)
-plaintext = b'Texto a descifrar usando algoritmo cast'
+iv = Random.new().read(CAST.block_size)
+cipher = CAST.new(key, CAST.MODE_OPENPGP, iv)
+plaintext = b'MENSAJE A DESCIFRAR CON EL ALGORITMO CAST'
 msg = cipher.encrypt(plaintext)
 
 
@@ -19,6 +20,7 @@ def index():
     id = msg
     return render_template("home.html", id=msg)
 
+
+
 if __name__ == "__main__":
     app.run()
-
