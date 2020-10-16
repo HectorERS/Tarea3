@@ -10,11 +10,11 @@ key = b'12345'
 iv = Random.new().read(CAST.block_size)
 cipher = CAST.new(key, CAST.MODE_CFB)
 msg= b'mensaje a descifrar con el algoritmo CAST128'
-if len(key)<10:
+if len(key)<=5:
     while i != 12:
         msg = cipher.encrypt(msg)
         i=i+1
-if len(key)>10:
+if len(key)>5:
     while i != 16:
         msg = cipher.encrypt(msg)
         i=i+1
@@ -33,3 +33,4 @@ def index():
 
 if __name__ == "__main__":
     app.run()
+
